@@ -1,0 +1,33 @@
+:root {
+    /* Color Variables */
+    --color-primary: #ff4500;
+    --color-primary-dark: #ff5722;
+    --color-text: #213547;
+    --color-text-light: #7c7c7c;
+    --color-background: #ffffff;
+    --color-background-secondary: #f6f7f8;
+    --color-border: #e1e4e8;
+    --color-link: #646cff;
+
+    /* spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* border radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    /* box shadow */
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /*Transitions*/
+    --transition-fast: 0.15s ease;
+    --transition-medium: 0.25s ease;
+    --transition-slow: 0.35s ease;
+}
