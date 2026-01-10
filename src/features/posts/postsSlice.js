@@ -4,11 +4,11 @@ const initialState ={
     items: [],
     status: 'idle',
     error: null,
-    selectedCatagory: 'popular',
+    selectedCategory: 'popular',
 };
 
 const postsSlice = createSlice({
-    name: 'post',
+    name: 'posts',
     initialState,
     reducers: {
         // we can add reducers here later
