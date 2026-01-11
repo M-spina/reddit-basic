@@ -9,7 +9,7 @@
     padding: var(--spacing-xl);
     text-align: center;
     background-color: var(--color-background);
-    border-radius: var(--radius-md);
+    border-radius: var(--border-radius-md);
 }
 
 .posts-list__error button {
@@ -18,7 +18,7 @@
     background-color: var(--color-primary);
     color: white;
     border: none;
-    border-radius: var(--radius-sm);
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
 }
 
