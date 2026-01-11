@@ -24,7 +24,7 @@ export default function PostsList() {
         );
     }
 
-    if(items.length === 0){
+    if(status === 'succeeded' && items.length === 0){
         return <div className="posts-list__empty">No posts available.</div>;
     }
 

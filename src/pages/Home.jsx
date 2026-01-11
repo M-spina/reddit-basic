@@ -9,14 +9,14 @@ import { s } from "framer-motion/client";
 
 export default function Home() {
     const dispatch = useDispatch();
-    const { selectCategory, status } = useSelector((state) => state.posts);
+    const { selectedCategory, status } = useSelector((state) => state.posts);
 
     //Home conntrols When to fetch posts
     useEffect(() => {
         if(status === 'idle') {
-            dispatch(fetchPosts(selectCategory));
+            dispatch(fetchPosts(selectedCategory));
         }
-    }, [status, selectCategory, dispatch]);
+    }, [status, selectedCategory, dispatch]);
 
     return (
         <div className="page">
