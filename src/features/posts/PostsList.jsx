@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "./postsSlice.js";
 import PostCard from "./PostCard.jsx";
@@ -8,12 +8,7 @@ export default function PostsList() {
     const dispatch = useDispatch();
     const { items, status, error} = useSelector((state) => state.posts);
 
-    useEffect(() => {
-        if(status === 'idle'){
-            dispatch(fetchPosts('popular'));
-        }
-    }, [status, dispatch]);
-
+    // PostList ONly handles display logic and not fetching logic
     if(status === 'loading'){
         return <div className="posts-list__loading">Loading...</div>
     }
