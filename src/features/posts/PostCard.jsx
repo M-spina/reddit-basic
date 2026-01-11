@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import './PostCard.css';
 
 export default function PostCard({ post }){
     const { id, title, author, score, numComments, thumbnail, subreddit} = post;
+    const [imageError, setImageError] = useState(false);
 
-    const hasValidThumbnail = thumbnail && !['self', 'default', 'nsfw', '', 'image', 'spoiler'].includes(thumbnail) && thumbnail.startsWith('http');
+    const hasValidThumbnail = thumbnail && !['self', 'default', 'nsfw', '', 'image', 'spoiler'].includes(thumbnail) && thumbnail.startsWith('http') && !imageError;
 
     return (
         <Link to={`/post/${id}`} className="post-card">
             {hasValidThumbnail && (
-                <img src={thumbnail} alt={title} className='post-card__thumbnail' />
+                <img src={thumbnail} alt={title} className='post-card__thumbnail' onError={() => setImageError(true)}/>
             )}
 
             <div className="post-card__content">

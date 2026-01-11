@@ -23,6 +23,15 @@
   flex-shrink: 0;
 }
 
+.post-card__thumbnail--placeholder {
+    background-color: var(--color-background-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--color-text-light);
+}
+
 .post-card__content{
     flex: 1;
     display: flex;
