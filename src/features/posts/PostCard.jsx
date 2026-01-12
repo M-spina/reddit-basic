@@ -11,7 +11,7 @@ export default function PostCard({ post }){
     return (
         <Link to={`/post/${id}`} className="post-card">
             {hasValidThumbnail && (
-                <img src={thumbnail} alt={title} className='post-card__thumbnail' onError={() => setImageError(true)}/>
+                <img src={thumbnail} alt={title} className='post-card__thumbnail' onError={() => setImageError(true)} loading="lazy"/>
             )}
 
             <div className="post-card__content">

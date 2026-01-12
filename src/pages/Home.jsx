@@ -4,7 +4,7 @@ import { fetchPosts } from "../features/posts/postsSlice.js"
 import PostsList from "../features/posts/PostsList.jsx"
 import SearchBar from "../components/SearchBar.jsx"
 import CategoryFilter from "../components/CategoryFilter.jsx"
-import { s } from "framer-motion/client";
+
 
 
 export default function Home() {
@@ -13,15 +13,15 @@ export default function Home() {
 
     //Home conntrols When to fetch posts
     useEffect(() => {
-        if(status === 'idle') {
+        if(selectedCategory) {
             dispatch(fetchPosts(selectedCategory));
         }
-    }, [status, selectedCategory, dispatch]);
+    }, [selectedCategory, dispatch]);
 
     return (
         <div className="page">
             <h2>Welcome to Reddit Basic</h2>
-            <p>This is a simple Reddit client built with React and Vite 2.</p>
+            <p>This is a simple Reddit client built with React and Vite .</p>
             <SearchBar />
             <CategoryFilter />
             <PostsList />

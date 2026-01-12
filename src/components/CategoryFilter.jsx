@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedCategory } from "../features/posts/postsSlice";
-import { fetchPosts } from "../features/posts/postsSlice";
 import '../styles/CategoryFilter.css';
 
 const CATEGORIES = [
@@ -19,8 +18,7 @@ export default function CategoryFilter() {
     const handleCategoryChange = (category) => {
         // update selected category in the store
         dispatch(setSelectedCategory(category));
-        // fetch posts for the selected category
-        dispatch(fetchPosts(category));
+        // Home.jsx will react to this change and fetch
     };
 
     return (
