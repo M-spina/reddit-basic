@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchComments, clearComments } from '../features/comments/commentsSlice';
@@ -8,6 +8,7 @@ import '../styles/PostDetails.css';
 export default function PostDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const [imageError, setImageError] = useState(false);
 
     // get the post details from the store
     const post = useSelector((state) => state.posts.items.find((post) => post.id === id));
@@ -38,6 +39,11 @@ export default function PostDetails() {
         )
     }
 
+    const hasValidThumbnail = post.thumbnail &&
+        !['self', 'default', 'nsfw', 'image', 'spoiler'].includes(post.thumbnail) &&
+        post.thumbnail.startsWith('http') &&
+        !imageError;
+
 
     return (
         <div className='page'>
@@ -56,13 +62,19 @@ export default function PostDetails() {
                     <span>💬 {post.numComments} comments</span>
                 </div>
 
-                {post.thumbnail && 
-                !['self', 'default', 'nsfw', 'image', 'spoiler'].includes(post.thumbnail) && (
+                {hasValidThumbnail ? (
                     <img 
                         src={post.thumbnail} 
-                        alt="Post thumbnail" 
-                        className="post-detail__image"
+                        alt={post.title} 
+                        className='post-detail__image'
+                        onError={() => setImageError(true)}
+                        loading='lazy'
                     />
+                ) : (
+                    <div className='post-detail__placeholder'>
+                        <div className="post-detail__placeholder-icon">🖼️</div>
+                        <p className="post-detail__placeholder-text">{post.thumbnail === 'self' ? 'Text post' : 'No valid thumbnail available'}</p>
+                    </div>
                 )}
             </article>
 
