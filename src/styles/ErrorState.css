@@ -61,3 +61,31 @@
 .error-state__button:active {
     transform: translateY(1px);
 }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .error-state {
+        padding: var(--spacing-lg);
+    }
+
+    .error-state__title {
+        font-size: 1.1rem;
+    }
+
+    .error-state__message {
+        font-size: 0.9rem;
+    }
+
+    .error-state__hints {
+        padding: var(--spacing-sm);
+    }
+
+    .error-state__button {
+        width: 100%;
+        padding: var(--spacing-md);
+    }
+}

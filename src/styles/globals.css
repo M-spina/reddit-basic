@@ -81,3 +81,46 @@ main {
 .back-link::before{
     content: '← ';
 }
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE & TABLET
+   ======================================== */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    main {
+        padding: var(--spacing-sm);
+    }
+
+    .page {
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+    }
+
+    .header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet Devices (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    main {
+        padding: var(--spacing-md);
+    }
+
+    .page {
+        padding: var(--spacing-lg);
+    }
+}

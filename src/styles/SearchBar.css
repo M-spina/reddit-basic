@@ -35,3 +35,26 @@
 .search-bar__button:active {
     transform: translateY(1px);
 }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .search-bar {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .search-bar__input {
+        padding: var(--spacing-md);
+        font-size: 1rem;
+    }
+
+    .search-bar__button {
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1rem;
+    }
+}

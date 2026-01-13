@@ -35,3 +35,29 @@
     border-left-color: var(--color-primary);
     opacity: 0.95;
 }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .comment {
+        padding: var(--spacing-sm);
+    }
+
+    /* Reduce nesting indent on mobile */
+    .comment[style*="margin-left"] {
+        margin-left: 10px !important;
+    }
+
+    .comment__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .comment__body {
+        font-size: 0.9rem;
+    }
+}

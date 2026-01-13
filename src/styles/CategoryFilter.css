@@ -41,3 +41,21 @@
 .category-filter__button--active:hover {
     opacity: 0.9;
 }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .category-filter__buttons {
+        gap: var(--spacing-xs);
+    }
+
+    .category-filter__button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.875rem;
+        /* Make buttons more touch-friendly */
+        min-height: 44px;
+    }
+}
