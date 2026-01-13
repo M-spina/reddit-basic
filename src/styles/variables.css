@@ -30,4 +30,10 @@
     --transition-fast: 0.15s ease;
     --transition-medium: 0.25s ease;
     --transition-slow: 0.35s ease;
+
+
+    /* Breakpoints */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
 }

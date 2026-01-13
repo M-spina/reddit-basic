@@ -11,7 +11,7 @@ export default function ErrorState({
     return (
         <div className="error-state">
             <h3 className='error-state__title'>{title}</h3>
-            <p className='error-state__message'>{error}</p>
+            <p className='error-state__message'>{error?.message || String(error)}</p>
 
             {(isRateLimited || showHints) && (
                 <div className='error-state__hints'>
