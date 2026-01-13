@@ -1,24 +1,29 @@
 import { useSelector } from "react-redux";
 import Comment from "./Comment.jsx";
+import Loader from "../../components/Loader.jsx";
+import ErrorState from "../ui/ErrorState.jsx";
 import './CommentsList.css';
 
 export default function CommentsList() {
     const { items, status, error } = useSelector((state) => state.comments);
     
+    //show loader while loading
     if (status === 'loading') {
-        return <div className="comments-list__status">Loading comments...</div>;
+        return <Loader message="Loading comments..." />;
     }
 
     if(status === 'failed') {
         return (
-            <div className= "comments-list__error">
-                <p>Error loading comments: {error}</p>
-            </div>
+           <ErrorState
+               error={error}
+               title="Failed to load comments"
+               onRetry={null}
+           />
         );
     }
 
     if(items.length === 0 && status === 'succeeded') {
-        return <div className="comments-list__status">No comments available.</div>;
+        return <div className="comments-list__empty">No comments available.</div>;
     }
 
     if(status === 'idle') {

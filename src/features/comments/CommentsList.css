@@ -9,23 +9,12 @@
   border-bottom: 2px solid var(--color-border);
 }
 
-.comments-list__loading,
-.comments-list__error,
 .comments-list__empty {
   padding: var(--spacing-lg);
   text-align: center;
   background-color: var(--color-background-secondary);
+  border: 2px dashed var(--color-border);
   border-radius: var(--border-radius-md);
   margin-top: var(--spacing-md);
-}
-
-.comments-list__error {
-    border: 2px solid #ff6b6b;
-    background-color: #fff5f5;
-    color: #c53030;
-}
-
-.comments-list__empty {
-    border: 2px dashed var(--color-border);
-    color: var(--color-text-light);
+  color: var(--color-text-light);
 }
