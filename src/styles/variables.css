@@ -37,3 +37,23 @@
     --breakpoint-tablet: 768px;
     --breakpoint-desktop: 1024px;
 }
+
+/* ========================================
+   DARK MODE COLORS
+   ======================================== */
+
+.dark-mode {
+    --color-primary: #ff4500;
+    --color-primary-dark: #ff5722;
+    --color-text: #e4e4e7;
+    --color-text-light: #a1a1aa;
+    --color-background: #18181b;
+    --color-background-secondary: #27272a;
+    --color-border: #3f3f46;
+    --color-link: #818cf8;
+
+    /* Dark mode shadows (lighter for visibility) */
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}

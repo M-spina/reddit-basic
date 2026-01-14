@@ -9,6 +9,7 @@ body {
     color: var(--color-text);
     background-color: var(--color-background-secondary);
     line-height: 1.6;
+    transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
 a {
@@ -49,7 +50,10 @@ main {
     background-color: var(--color-primary);
     color: white;
     border-bottom: 2px solid var(--color-primary-dark);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--box-shadow-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header h1 {
@@ -68,8 +72,8 @@ main {
 .page {
     border-color: var(--color-background);
     padding: var(--spacing-lg);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
 }
 
 .back-link {
