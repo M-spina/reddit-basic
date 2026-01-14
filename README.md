@@ -20,10 +20,10 @@ If you are developing a production application, we recommend using TypeScript wi
 
 A modern, responsive Reddit client built with React, Redux Toolkit, and Vite. Browse subreddits, read posts, view comments, and switch between light and dark modes.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://your-site-name.netlify.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://my-reddit-basics.netlify.app)
 [![GitHub](https://img.shields.io/badge/github-repo-blue)](https://github.com/YOUR_USERNAME/reddit-basic)
 
-![Reddit Basic Screenshot](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+![Reddit Basic Screenshot](./public/ScreenShots/LightMode/Screenshot%202026-01-14%20at%2003.31.50.png)
 
 ---
 
