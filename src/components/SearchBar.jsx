@@ -24,7 +24,7 @@ export default function SearchBar() {
             <input
                 type="text"
                 className="search-bar__input"
-                placeholder='Search subreddits (e.g., javascript, react.js)...'
+                placeholder='Search subreddits (e.g., javascript, react.js)'
                 value={localSearch}
                 onChange = {(e) => setLocalSearch(e.target.value)}
             />
