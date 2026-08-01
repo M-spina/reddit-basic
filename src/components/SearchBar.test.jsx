@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { describe, expect, it } from 'vitest';
 import postsReducer from '../features/posts/postsSlice.js';
-import uiReducer from '../features/ui/uiSlice.js';
 import SearchBar from './SearchBar.jsx';
 
 describe('SearchBar', () => {
@@ -12,7 +11,6 @@ describe('SearchBar', () => {
         const store = configureStore({
             reducer: {
                 posts: postsReducer,
-                ui: uiReducer,
             },
         });
         const user = userEvent.setup();

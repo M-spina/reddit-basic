@@ -70,7 +70,6 @@ main {
 
 /* page styles */
 .page {
-    border-color: var(--color-background);
     padding: var(--spacing-lg);
     border-radius: var(--border-radius-md);
     box-shadow: var(--box-shadow-sm);
