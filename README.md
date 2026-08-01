@@ -2,8 +2,12 @@
 
 A responsive Reddit client built with React, Redux Toolkit, and Vite. Browse public subreddits, open post details directly, read nested comments, and switch between light and dark themes.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://my-reddit-basics.netlify.app)
+> **Archived portfolio project:** Reddit Basic was built and working in January 2026. In May 2026, Reddit blocked the unauthenticated JSON endpoints used by the application, so live posts and comments can no longer be loaded. The source code and original screenshots are retained to document this early frontend project and the skills developed while building it.
+
+[![Historical Demo](https://img.shields.io/badge/demo-historical-orange)](https://my-reddit-basics.netlify.app)
 [![GitHub](https://img.shields.io/badge/github-repo-blue)](https://github.com/M-spina/reddit-basic)
+
+The historical deployment remains available to demonstrate the interface, but its Reddit-powered content no longer loads.
 
 ![Reddit Basic Screenshot](./public/ScreenShots/LightMode/Screenshot%202026-01-14%20at%2003.31.50.png)
 
@@ -15,6 +19,7 @@ A responsive Reddit client built with React, Redux Toolkit, and Vite. Browse pub
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Testing](#testing)
+- [What I Learned](#what-i-learned)
 - [Project Structure](#project-structure)
 - [API and Data Caching](#api-and-data-caching)
 - [Limitations](#limitations)
@@ -150,6 +155,22 @@ Use `npm run lint` for static checks and `npm run build` to validate the product
 
 ---
 
+## 🌱 What I Learned
+
+Building Reddit Basic as my first frontend web application gave me practical experience with:
+
+- composing a responsive interface from reusable **React** components and CSS media queries;
+- using **Redux Toolkit** to model asynchronous API state, loading, success, error, and cached data;
+- implementing list-to-detail navigation and direct routes with **React Router**;
+- mapping external API responses and handling missing content, network failures, and rate limits;
+- adding regression coverage with **Vitest** and **React Testing Library**;
+- designing short-lived client-side caching and understanding its lifecycle and trade-offs; and
+- building with **Vite** and deploying a single-page application to **Netlify**, including direct-route rewrites.
+
+The project also demonstrated why production applications should use supported, authenticated APIs instead of relying on informal public endpoints that can change outside the application's control.
+
+---
+
 ## 📁 Project Structure
 
 ```text
@@ -208,7 +229,7 @@ reddit-basic/
 
 ### Reddit JSON Endpoints
 
-The app reads Reddit's public JSON endpoints without OAuth:
+The original working version read Reddit's public JSON endpoints without OAuth:
 
 ```text
 # Subreddit listing
@@ -243,13 +264,17 @@ The API layer reports missing subreddits or posts, private or restricted content
 
 ## ⚠️ Limitations
 
-- Reddit's unauthenticated JSON endpoints are outside this project's control and may return HTTP 403, 404, or 429 responses.
+- Since Reddit blocked these unauthenticated JSON requests in May 2026, the deployed application can no longer load live subreddit posts or comments and commonly receives HTTP 403 responses.
 - Private, quarantined, age-restricted, removed, or otherwise restricted communities and posts may be unavailable.
 - Browser privacy settings, network policy, or Reddit's cross-origin controls may cause a request to fail before an HTTP response is exposed.
 - The five-minute cache reduces repeated requests but does not guarantee protection from rate limits.
 - Caches are not persisted across refreshes or shared between tabs.
 - Galleries and videos are linked to Reddit rather than embedded.
 - The client is read-only: it does not authenticate, vote, post, or save Reddit content.
+
+### Restoration Requirements
+
+Restoring live data would require replacing the informal `.json` requests with a currently supported, authenticated Reddit API integration, likely using OAuth. Depending on Reddit's current API requirements, a backend or serverless function may also be needed to perform the authenticated requests and keep credentials out of the browser. That migration is outside the scope of this archived learning project.
 
 ---
 
@@ -281,6 +306,8 @@ The API layer reports missing subreddits or posts, private or restricted content
 ---
 
 ## 📸 Screenshots
+
+These screenshots were captured on **14 January 2026** and show the application working before Reddit's unauthenticated JSON access changed in May 2026.
 
 ### Light Mode — Home Page
 
