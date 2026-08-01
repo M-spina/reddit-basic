@@ -6,12 +6,15 @@ export default function ErrorState({
     title = '⚠️ Oops!',
     showHints = false
 }) {
-    const isRateLimited = error?.message?.toLowerCase().includes('rate limit');
+    const message = typeof error === 'string'
+        ? error
+        : error?.message || 'An unexpected error occurred.';
+    const isRateLimited = message.toLowerCase().includes('rate limit');
 
     return (
         <div className="error-state">
             <h3 className='error-state__title'>{title}</h3>
-            <p className='error-state__message'>{error?.message || String(error)}</p>
+            <p className='error-state__message'>{message}</p>
 
             {(isRateLimited || showHints) && (
                 <div className='error-state__hints'>
