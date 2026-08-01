@@ -1,27 +1,9 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
 # 🔥 Reddit Basic
 
-A modern, responsive Reddit client built with React, Redux Toolkit, and Vite. Browse subreddits, read posts, view comments, and switch between light and dark modes.
+A responsive Reddit client built with React, Redux Toolkit, and Vite. Browse public subreddits, open post details directly, read nested comments, and switch between light and dark themes.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://my-reddit-basics.netlify.app)
-[![GitHub](https://img.shields.io/badge/github-repo-blue)](https://github.com/YOUR_USERNAME/reddit-basic)
+[![GitHub](https://img.shields.io/badge/github-repo-blue)](https://github.com/M-spina/reddit-basic)
 
 ![Reddit Basic Screenshot](./public/ScreenShots/LightMode/Screenshot%202026-01-14%20at%2003.31.50.png)
 
@@ -32,8 +14,10 @@ A modern, responsive Reddit client built with React, Redux Toolkit, and Vite. Br
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
+- [Testing](#testing)
 - [Project Structure](#project-structure)
-- [API & Data Caching](#api--data-caching)
+- [API and Data Caching](#api-and-data-caching)
+- [Limitations](#limitations)
 - [Future Enhancements](#future-enhancements)
 - [Screenshots](#screenshots)
 - [License](#license)
@@ -43,47 +27,53 @@ A modern, responsive Reddit client built with React, Redux Toolkit, and Vite. Br
 ## ✨ Features
 
 ### Core Functionality
-- 🔍 **Search Subreddits** - Search and browse any public subreddit
-- 📱 **Category Filters** - Quick access to popular categories (JavaScript, ReactJS, WebDev, etc.)
-- 💬 **Comment Threads** - View nested comments with proper indentation
-- 🔄 **Real-time Updates** - Fetches latest posts from Reddit's JSON API
+
+- 🔍 **Subreddit Search** — Browse public subreddits by name.
+- 📱 **Category Filters** — Jump to Popular, JavaScript, ReactJS, WebDev, Programming, or Technology.
+- 🔗 **Direct Post Details** — Open or refresh a `/post/:id` URL without first loading the home feed.
+- 📝 **Post Content** — Read self-text, view full direct images, and follow outbound or Reddit permalink links.
+- 💬 **Nested Comments** — Read flattened comment threads with their original order and indentation depth.
 
 ### User Experience
-- 🌓 **Dark Mode** - Toggle between light and dark themes with persistent preference
-- 📱 **Responsive Design** - Optimized for mobile, tablet, and desktop
-- ⚡ **Loading Skeletons** - Smooth loading states with animated skeletons
-- ⚠️ **Error Handling** - User-friendly error messages with retry functionality
-- 💾 **Smart Caching** - 5-minute cache to reduce API calls and avoid rate limits
 
-### Performance & Optimization
-- 🚀 **Fast Load Times** - Built with Vite for lightning-fast development and production builds
-- 📦 **Code Splitting** - Optimized bundle size with lazy loading
-- 🎯 **Rate Limit Protection** - Intelligent caching prevents hitting Reddit's API limits
-- ♿ **Accessibility** - ARIA labels and keyboard navigation support
+- 🌓 **Persistent Theme** — Save a light or dark preference in `localStorage`, with system preference as the fallback.
+- 📱 **Responsive Layout** — Adapt the interface for mobile, tablet, and desktop widths.
+- ⚡ **Loading Feedback** — Show skeletons for post listings and a loader for direct post navigation.
+- ⚠️ **Error Recovery** — Display API errors and retry failed post-list or post-detail requests.
+- 💾 **Short-Lived Caching** — Reuse successful requests for five minutes within the current browser tab.
+
+### Accessibility Baseline
+
+The interface uses native links, buttons, and form controls, including a labeled theme-toggle button and descriptive image alternative text. These controls inherit standard browser keyboard behavior. The project has not undergone a formal accessibility audit or WCAG conformance review.
 
 ---
 
 ## 🛠️ Technologies Used
 
 ### Frontend
-- **[React](https://react.dev/)** (18.3.1) - UI library for building component-based interfaces
-- **[Redux Toolkit](https://redux-toolkit.js.org/)** (2.5.0) - State management with modern Redux patterns
-- **[React Router](https://reactrouter.com/)** (7.1.1) - Client-side routing for navigation
-- **[Vite](https://vite.dev/)** (6.0.5) - Next-generation frontend build tool
+
+- **[React](https://react.dev/)** (19.2) — Component-based UI.
+- **[Redux Toolkit](https://redux-toolkit.js.org/)** (2.11) — Posts, comments, and theme state.
+- **[React Router](https://reactrouter.com/)** (7.12) — Client-side home and post-detail routes.
+- **[Vite](https://vite.dev/)** (7.2) — Development server and production build tool.
 
 ### Styling
-- **CSS Variables** - Dynamic theming for light/dark mode
-- **BEM Methodology** - Block-Element-Modifier naming convention for maintainable CSS
-- **Responsive Design** - Mobile-first approach with media queries
+
+- **CSS custom properties** — Theme-aware colours, spacing, radii, shadows, and transitions.
+- **BEM-style class names** — Component-oriented CSS naming.
+- **Media queries** — Mobile and tablet layouts.
 
 ### API
-- **[Reddit JSON API](https://www.reddit.com/dev/api/)** - Public API for fetching posts and comments
-- **Native Fetch API** - Modern, promise-based HTTP requests
 
-### Development Tools
-- **ESLint** - Code linting and quality checks
-- **Git & GitHub** - Version control and collaboration
-- **Netlify** - Continuous deployment and hosting
+- **[Reddit JSON API](https://www.reddit.com/dev/api/)** — Unauthenticated public post and comment data.
+- **Native Fetch API** — Browser requests and HTTP error handling.
+
+### Testing and Tooling
+
+- **Vitest and jsdom** — Unit and component test environment.
+- **React Testing Library, jest-dom, and user-event** — User-focused component tests.
+- **ESLint** — Static code checks.
+- **Netlify** — Hosting, deploy previews, and the SPA route rewrite.
 
 ---
 
@@ -97,160 +87,211 @@ A modern, responsive Reddit client built with React, Redux Toolkit, and Vite. Br
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/YOUR_USERNAME/reddit-basic.git
+   git clone https://github.com/M-spina/reddit-basic.git
    cd reddit-basic
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. **Start development server**
+3. **Start the development server**
+
    ```bash
    npm run dev
    ```
 
-4. **Open in browser**
-   ```
+4. **Open the app**
+
+   ```text
    http://localhost:5173
    ```
 
-### Build for Production
+### Production Build
 
 ```bash
 npm run build
-```
-
-This creates an optimized production build in the `dist` folder.
-
-### Preview Production Build
-
-```bash
 npm run preview
 ```
+
+Vite writes the optimized build to `dist`. Netlify copies `public/_redirects` into that build so History API routes such as `/post/:id` serve `index.html` on direct visits and refreshes.
+
+---
+
+## 🧪 Testing
+
+Run the complete test suite once:
+
+```bash
+npm test
+```
+
+Run tests in watch mode during development:
+
+```bash
+npm run test:watch
+```
+
+The automated coverage includes:
+
+- post-list and post-detail Redux request states;
+- successful Reddit mapping plus 404, 429, and offline failures;
+- subreddit search submission;
+- saved-theme initialization, system fallback, toggling, and persistence;
+- recursive comment ordering and depth;
+- direct post navigation from an empty store, retry recovery, and self-text, image, and link rendering;
+- string-based error display and rate-limit-specific retry feedback.
+
+Use `npm run lint` for static checks and `npm run build` to validate the production bundle.
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 reddit-basic/
 ├── public/
-│   └── ScreenShots
-│         ├── DarkMode          #Screen-shots of website in dark mode
-│         ├── LightMode         #Screen-shots of website in Light mode
-│         └── MobileView        #Screen-shots of website in mobile view 
+│   ├── _redirects                    # Netlify SPA rewrite
+│   └── ScreenShots/
+│       ├── DarkMode/
+│       ├── LightMode/
+│       └── MobileView/
 ├── src/
 │   ├── app/
-│   │   └── store.js            # Redux store configuration
+│   │   ├── rootReducer.js            # Redux reducer map
+│   │   └── store.js                  # Redux store configuration
 │   ├── components/
-│   │   ├── Header.jsx          # App header with navigation
-│   │   ├── SearchBar.jsx       # Subreddit search component
-│   │   ├── CategoryFilter.jsx  # Category filter buttons
-│   │   ├── Loader.jsx          # Loading spinner component
-│   │   └── ThemeToggle.jsx     # Dark mode toggle button
+│   │   ├── CategoryFilter.jsx        # Preset subreddit buttons
+│   │   ├── Header.jsx                # App header and navigation
+│   │   ├── Loader.jsx                # Loading indicator
+│   │   ├── SearchBar.jsx             # Subreddit search
+│   │   └── ThemeToggle.jsx           # Dark mode toggle button
 │   ├── features/
-│   │   ├── posts/
-│   │   │   ├── postsSlice.js   # Posts Redux slice
-│   │   │   ├── postsAPI.js     # Reddit posts API calls
-│   │   │   ├── PostsList.jsx   # Posts list container
-│   │   │   ├── PostCard.jsx    # Individual post card
-│   │   │   └── PostsSkeleton.jsx # Loading skeleton
 │   │   ├── comments/
-│   │   │   ├── commentsSlice.js # Comments Redux slice
-│   │   │   ├── commentsAPI.js   # Reddit comments API calls
-│   │   │   ├── CommentsList.jsx # Comments list container
-│   │   │   └── Comment.jsx      # Individual comment
-│   │   ├── theme/
-│   │   │   └── themeSlice.js    # Theme Redux slice
+│   │   │   ├── commentsAPI.js
+│   │   │   ├── commentsAPI.test.js
+│   │   │   ├── commentsSlice.js
+│   │   │   ├── Comment.jsx
+│   │   │   └── CommentsList.jsx
+│   │   ├── posts/
+│   │   │   ├── postsAPI.js
+│   │   │   ├── postsAPI.test.js
+│   │   │   ├── postsSlice.js
+│   │   │   ├── postsSlice.test.js
+│   │   │   ├── PostCard.jsx
+│   │   │   ├── PostsList.jsx
+│   │   │   └── PostsSkeleton.jsx
 │   │   └── ui/
-│   │       ├── uiSlice.js       # UI state management
-│   │       └── ErrorState.jsx   # Error display component
+│   │       ├── ErrorState.jsx
+│   │       └── ErrorState.test.jsx
 │   ├── pages/
-│   │   ├── Home.jsx             # Home page
-│   │   └── PostDetails.jsx      # Post detail page
-│   ├── styles/
-│   │   ├── variables.css        # CSS custom properties
-│   │   ├── globals.css          # Global styles
-│   │   └── [component].css      # Component-specific styles
-│   ├── App.jsx                  # Root component
-│   └── main.jsx                 # Entry point
+│   │   ├── Home.jsx
+│   │   ├── PostDetails.jsx
+│   │   └── PostDetails.test.jsx
+│   ├── styles/                       # Global and component CSS
+│   ├── test/
+│   │   └── setup.js                  # Shared jest-dom setup
+│   ├── App.jsx                       # Route definitions
+│   └── main.jsx                      # Browser entry point
 ├── index.html
-├── vite.config.js               # Vite configuration
-└── package.json
+├── package.json
+└── vite.config.js
 ```
 
 ---
 
-## 🔌 API & Data Caching
+## 🔌 API and Data Caching
 
-### Reddit JSON API
+### Reddit JSON Endpoints
 
-This app uses Reddit's public JSON API (no authentication required):
+The app reads Reddit's public JSON endpoints without OAuth:
 
-```javascript
-// Fetch posts from a subreddit
-https://www.reddit.com/r/{subreddit}.json
+```text
+# Subreddit listing
+https://www.reddit.com/r/{subreddit}.json?raw_json=1
 
-// Fetch comments for a post
+# One post by ID for direct navigation
+https://www.reddit.com/comments/{postId}.json?raw_json=1&limit=1
+
+# Comments for a recovered post and subreddit
 https://www.reddit.com/r/{subreddit}/comments/{postId}.json
 ```
 
+If a post already exists in the listing state, the detail page uses it immediately. Otherwise it fetches the post by ID, verifies that the response still belongs to the active route, and then requests comments using the recovered subreddit.
+
+Self-text preserves line breaks. Direct-image posts use their full URL, ordinary link posts expose the outbound destination, and every post with a permalink provides a **View on Reddit** link. Gallery and video content links back to Reddit rather than being embedded.
+
 ### Caching Strategy
 
-- **Cache Duration**: 5 minutes
-- **Storage**: In-memory Map object
-- **Benefits**:
-  - Reduces API calls by ~80%
-  - Prevents rate limiting (60 requests/minute)
-  - Faster load times for repeated visits
-  - Stale cache fallback during rate limits
+- Listing responses are cached by subreddit.
+- Direct-detail responses are cached by post ID.
+- Comment responses are cached by subreddit and post ID.
+- Each cache entry is considered fresh for five minutes.
+- The caches are in-memory JavaScript `Map` objects scoped to the current browser tab.
+- A full page refresh, closed tab, or new tab starts with empty caches.
+- When Reddit returns HTTP 429 and an older cache entry exists, the app can return that stale entry instead of failing the request.
 
-### Rate Limit Handling
+### Error Handling
 
-- Detects HTTP 429 responses
-- Falls back to stale cache if available
-- Shows user-friendly error messages
-- Provides retry functionality
+The API layer reports missing subreddits or posts, private or restricted content, rate limits, other failed HTTP responses, and offline requests. The interface renders the resulting message and offers a retry action where appropriate.
+
+---
+
+## ⚠️ Limitations
+
+- Reddit's unauthenticated JSON endpoints are outside this project's control and may return HTTP 403, 404, or 429 responses.
+- Private, quarantined, age-restricted, removed, or otherwise restricted communities and posts may be unavailable.
+- Browser privacy settings, network policy, or Reddit's cross-origin controls may cause a request to fail before an HTTP response is exposed.
+- The five-minute cache reduces repeated requests but does not guarantee protection from rate limits.
+- Caches are not persisted across refreshes or shared between tabs.
+- Galleries and videos are linked to Reddit rather than embedded.
+- The client is read-only: it does not authenticate, vote, post, or save Reddit content.
 
 ---
 
 ## 🔮 Future Enhancements
 
-### Features to Add
-- [ ] **Post Sorting** - Sort by hot, new, top, rising
-- [ ] **Time Filters** - Filter posts by hour, day, week, month, year
-- [ ] **Share Functionality** - Share posts via Web Share API
-- [ ] **Search Within Subreddit** - Filter posts by keywords
-- [ ] **Upvote/Downvote Display** - Show vote ratio visualization
+### Features
+
+- [ ] Post sorting by hot, new, top, or rising.
+- [ ] Time filters for top listings.
+- [ ] Share support through the Web Share API.
+- [ ] Keyword filtering within a loaded subreddit.
+- [ ] Vote-ratio visualization.
 
 ### Technical Improvements
-- [ ] **TypeScript Migration** - Add type safety
-- [ ] **Unit Tests** - Jest + React Testing Library
-- [ ] **E2E Tests** - Playwright or Cypress
-- [ ] **Image Optimization** - Lazy load images, WebP format
-- [ ] **Accessibility Audit** - WCAG 2.1 AA compliance
 
-### UI/UX Enhancements
-- [ ] **Animations** - Framer Motion for smooth transitions
-- [ ] **Themes** - Multiple color themes beyond light/dark
-- [ ] **Custom Fonts** - Typography improvements
-- [ ] **Keyboard Shortcuts** - Power user features
-- [ ] **Settings Panel** - User preferences (posts per page, etc.)
+- [ ] TypeScript migration.
+- [ ] End-to-end browser coverage with Playwright or Cypress.
+- [ ] A formal accessibility audit and follow-up fixes.
+- [ ] Persistent or service-worker-backed caching.
+
+### UI and UX
+
+- [ ] Evaluate Framer Motion for optional future transitions.
+- [ ] Additional colour themes.
+- [ ] Typography improvements.
+- [ ] Keyboard shortcuts.
+- [ ] A user settings panel.
 
 ---
 
 ## 📸 Screenshots
 
-### Light Mode - Home Page
+### Light Mode — Home Page
+
 ![Light Mode Home](./public/ScreenShots/LightMode/Screenshot%202026-01-14%20at%2003.31.14.png)
 
-### Dark Mode - Post Details
+### Dark Mode — Post Details
+
 ![Dark Mode Details](./public/ScreenShots/DarkMode/Screenshot%202026-01-14%20at%2003.36.37.png)
 
 ### Mobile Responsive
+
 ![Mobile View](./public/ScreenShots/MobileView/Screenshot%202026-01-14%20at%2003.35.57.png)
 ![Mobile View](./public/ScreenShots/MobileView/Screenshot%202026-01-14%20at%2003.34.16.png)
 
@@ -258,13 +299,13 @@ https://www.reddit.com/r/{subreddit}/comments/{postId}.json
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you'd like to improve Reddit Basic:
+Contributions are welcome:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/amazing-feature`.
+3. Commit the change: `git commit -m 'Add amazing feature'`.
+4. Push the branch: `git push origin feature/amazing-feature`.
+5. Open a pull request.
 
 ---
 
@@ -285,18 +326,18 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- [Reddit](https://www.reddit.com/) for providing the JSON API
-- [Vite](https://vite.dev/) for the amazing build tool
-- [Redux Toolkit](https://redux-toolkit.js.org/) for simplified state management
-- [Netlify](https://www.netlify.com/) for free hosting and deployment
+- [Reddit](https://www.reddit.com/) for providing the JSON API.
+- [Vite](https://vite.dev/) for the build tooling.
+- [Redux Toolkit](https://redux-toolkit.js.org/) for state management.
+- [Netlify](https://www.netlify.com/) for hosting and deploy previews.
 
 ---
 
 ## 📊 Project Stats
 
-![GitHub repo size](https://img.shields.io/github/repo-size/YOUR_USERNAME/reddit-basic)
-![GitHub last commit](https://img.shields.io/github/last-commit/YOUR_USERNAME/reddit-basic)
-![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/reddit-basic?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/M-spina/reddit-basic)
+![GitHub last commit](https://img.shields.io/github/last-commit/M-spina/reddit-basic)
+![GitHub stars](https://img.shields.io/github/stars/M-spina/reddit-basic?style=social)
 
 ---
 
