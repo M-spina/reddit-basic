@@ -2,6 +2,7 @@
     /* Color Variables */
     --color-primary: #ff4500;
     --color-primary-dark: #ff5722;
+    --color-primary-secondary: #fff0eb;
     --color-text: #213547;
     --color-text-light: #7c7c7c;
     --color-background: #ffffff;
@@ -45,6 +46,7 @@
 .dark-mode {
     --color-primary: #ff4500;
     --color-primary-dark: #ff5722;
+    --color-primary-secondary: #3a211a;
     --color-text: #e4e4e7;
     --color-text-light: #a1a1aa;
     --color-background: #18181b;

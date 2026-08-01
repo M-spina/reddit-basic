@@ -1,8 +1,8 @@
 .post-detail {
     background-color: var(--color-background);
     padding: var(--spacing-lg);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
     margin-bottom: var(--spacing-xl);
 }
 
