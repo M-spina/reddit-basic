@@ -1,7 +1,6 @@
 import { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedCategory } from '../features/posts/postsSlice';
-import { setSearchTerm } from '../features/ui/uiSlice';
 import '../styles/SearchBar.css';
 
 export default function SearchBar() {
@@ -11,7 +10,6 @@ export default function SearchBar() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(localSearch.trim() !== '') {
-            dispatch(setSearchTerm(localSearch));
             // Treat search as a category change
             dispatch(setSelectedCategory(localSearch));
             // Clear the input field after submission
