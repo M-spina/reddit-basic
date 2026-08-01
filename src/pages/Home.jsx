@@ -9,7 +9,7 @@ import CategoryFilter from "../components/CategoryFilter.jsx"
 
 export default function Home() {
     const dispatch = useDispatch();
-    const { selectedCategory, status } = useSelector((state) => state.posts);
+    const { selectedCategory } = useSelector((state) => state.posts);
 
     //Home conntrols When to fetch posts
     useEffect(() => {

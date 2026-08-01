@@ -17,7 +17,6 @@ export default function PostsList() {
 
     // show error state
     if(status === 'failed'){
-        const isRateLimited = error && error.includes('rate limit');
         return (
             <ErrorState
                 error={error}
